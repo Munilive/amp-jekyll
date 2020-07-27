@@ -18,6 +18,9 @@ module Jekyll
         else
           if image['src'].start_with?('http://', 'https://')
             src = image['src']
+          elsif image['src'].start_with?('../')
+            tmp_src = image['src'].gsub('../', '')
+            src = File.join(Dir.pwd, '_site', tmp_src)
           else
             # FastImage doesn't seem to handle local paths when used with Jekyll
             # so let's just force the path
