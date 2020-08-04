@@ -83,6 +83,10 @@ module Jekyll
         amp_img.add_child(noscript)
       end
 
+      doc.css('table[caption]').each do |table|
+        table.remove_attribute('caption')
+      end
+
       # Return the html as plaintext string
       doc.to_s
     end
